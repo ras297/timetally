@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class User extends Entity {
     private final String username;
 
-    protected User(Long id, String username, LocalDateTime createDate, LocalDateTime modifyDate) {
+    public User(Long id, String username, LocalDateTime createDate, LocalDateTime modifyDate) {
         super(id, createDate, modifyDate);
         this.username = username;
     }

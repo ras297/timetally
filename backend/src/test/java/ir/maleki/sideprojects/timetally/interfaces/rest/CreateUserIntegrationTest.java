@@ -25,7 +25,7 @@ class CreateUserIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue("""
                         {
-                          "email": "%s",
+                          "username": "%s",
                           "password": "%s"
                         }
                         """.formatted(email, password))
@@ -34,7 +34,7 @@ class CreateUserIntegrationTest {
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
                 .expectBody()
                 .jsonPath("$.id").exists()
-                .jsonPath("$.email").isEqualTo(email)
+                .jsonPath("$.username").isEqualTo(email)
                 .jsonPath("$.password").doesNotExist();
     }
 }

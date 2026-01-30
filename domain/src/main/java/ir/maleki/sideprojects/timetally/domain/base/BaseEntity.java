@@ -1,15 +1,31 @@
 package ir.maleki.sideprojects.timetally.domain.base;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Version;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public abstract class Entity {
+@MappedSuperclass
+public abstract class BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
+    @Column(nullable = false, updatable = false)
     protected LocalDateTime createDate;
+    @Column(nullable = false)
     protected LocalDateTime modifyDate;
+    @Version
     protected Integer version;
 
-    protected Entity(Long id, LocalDateTime createDate, LocalDateTime modifyDate) {
+    public BaseEntity() {
+    }
+
+    protected BaseEntity(Long id, LocalDateTime createDate, LocalDateTime modifyDate) {
         this.id = id;
         this.createDate = createDate;
         this.modifyDate = modifyDate;
@@ -27,6 +43,7 @@ public abstract class Entity {
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(id);
@@ -44,10 +61,6 @@ public abstract class Entity {
         return version;
     }
 
-    public void incrementVersion() {
-        this.version = version + 1;
-    }
-
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -56,7 +69,7 @@ public abstract class Entity {
         if (that == null || this.getClass() != that.getClass()) {
             return false;
         }
-        return Objects.equals(id, ((Entity) that).id);
+        return Objects.equals(id, ((BaseEntity) that).id);
     }
 
 }

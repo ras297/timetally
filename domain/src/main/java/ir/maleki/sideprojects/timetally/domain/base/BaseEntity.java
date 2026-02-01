@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Version;
 
 import java.time.LocalDateTime;
@@ -23,13 +25,6 @@ public abstract class BaseEntity {
     protected Integer version;
 
     public BaseEntity() {
-    }
-
-    protected BaseEntity(Long id, LocalDateTime createDate, LocalDateTime modifyDate) {
-        this.id = id;
-        this.createDate = createDate;
-        this.modifyDate = modifyDate;
-        this.version = 1;
     }
 
     public Long id() {
@@ -59,6 +54,18 @@ public abstract class BaseEntity {
 
     public Integer version() {
         return version;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        this.modifyDate = now;
+        this.createDate = now;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.modifyDate = LocalDateTime.now();
     }
 
     @Override

@@ -5,7 +5,10 @@ COPY gradle gradle
 COPY gradlew build.gradle settings.gradle ./
 RUN ./gradlew dependencies --no-daemon
 
-COPY src src
+COPY domain domain
+COPY application application
+COPY backend backend
+
 RUN ./gradlew bootJar --no-daemon
 
 FROM eclipse-temurin:21-jre

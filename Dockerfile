@@ -2,7 +2,7 @@ FROM gradle:8.6-jdk21 AS build
 WORKDIR /app
 
 COPY gradle gradle
-COPY gradlew build.gradle ./
+COPY gradlew build.gradle settings.gradle ./
 RUN ./gradlew dependencies --no-daemon
 
 COPY src src

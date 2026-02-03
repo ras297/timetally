@@ -6,14 +6,14 @@ COPY gradlew build.gradle settings.gradle ./
 
 RUN chmod +x gradlew
 RUN --mount=type=cache,target=/home/gradle/.gradle \
-    gradle dependencies --no-daemon
+    ./gradlew dependencies --no-daemon
 
 COPY domain domain
 COPY application application
 COPY backend backend
 
 RUN --mount=type=cache,target=/home/gradle/.gradle \
-    gradle build --no-daemon
+    ./gradlew build --no-daemon
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app

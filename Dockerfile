@@ -13,7 +13,7 @@ COPY application application
 COPY backend backend
 
 RUN --mount=type=cache,target=/home/gradle/.gradle \
-    gradle build --no-daemon -x
+    gradle build --no-daemon
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app

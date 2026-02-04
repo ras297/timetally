@@ -5,6 +5,7 @@ import ir.maleki.sideprojects.timetally.application.user.UserDto;
 import ir.maleki.sideprojects.timetally.application.user.UserService;
 import ir.maleki.sideprojects.timetally.domain.user.User;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody CreateUser request) {
+    public ResponseEntity<UserDto> createUser(@RequestBody @Validated CreateUser request) {
         User user = userService.createUser(request);
         UserDto response = new UserDto(user.id(), user.username());
         return ResponseEntity.created(URI.create("/api/v1/users/1")).body(response);

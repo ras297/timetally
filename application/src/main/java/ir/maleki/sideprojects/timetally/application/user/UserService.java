@@ -8,12 +8,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService {
     private final JpaUserRepository userRepository;
+
     public UserService(JpaUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Transactional
     public User createUser(CreateUser command) {
+        if (userRepository.existsByUsername(command.username())) {
+            throw new UserAlreadyExistsException(command.username());
+        }
         return userRepository.saveAndFlush(new User(command.username()));
     }
 }

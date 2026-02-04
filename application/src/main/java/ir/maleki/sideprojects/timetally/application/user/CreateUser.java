@@ -7,8 +7,4 @@ import java.io.Serializable;
 
 public record CreateUser(@NotBlank @Size(min = 5, max = 20) String username,
                          @NotBlank @Size(min = 8, max = 20) String password) implements Serializable {
-    public CreateUser(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 }

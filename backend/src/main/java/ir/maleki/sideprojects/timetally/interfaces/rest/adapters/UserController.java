@@ -1,4 +1,4 @@
-package ir.maleki.sideprojects.timetally.interfaces.rest;
+package ir.maleki.sideprojects.timetally.interfaces.rest.adapters;
 
 import ir.maleki.sideprojects.timetally.application.user.CreateUser;
 import ir.maleki.sideprojects.timetally.application.user.UserDto;

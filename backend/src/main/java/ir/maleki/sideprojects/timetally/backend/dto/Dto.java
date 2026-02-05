@@ -1,4 +1,6 @@
 package ir.maleki.sideprojects.timetally.backend.dto;
 
-public interface Dto {
+import java.io.Serializable;
+
+public interface Dto extends Serializable {
 }

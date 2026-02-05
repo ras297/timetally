@@ -1,3 +1,7 @@
+plugins {
+    id "org.sonarqube" version "7.2.2.6593"
+}
+
 allprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
@@ -14,7 +18,7 @@ allprojects {
     }
 
     repositories {
-        mavenCentral()
+        maven { url 'https://maven.myket.ir' }
     }
 
     tasks.named('test') {

@@ -1,4 +1,4 @@
-package ir.maleki.sideprojects.timetally.interfaces.rest;
+package ir.maleki.sideprojects.timetally.backend.interfaces.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

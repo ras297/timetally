@@ -1,10 +1,10 @@
-package ir.maleki.sideprojects.timetally.interfaces.rest.adapters;
+package ir.maleki.sideprojects.timetally.backend.interfaces.rest.adapters;
 
 import ir.maleki.sideprojects.timetally.application.user.CreateUser;
 import ir.maleki.sideprojects.timetally.application.user.UserDto;
 import ir.maleki.sideprojects.timetally.application.user.UserService;
+import ir.maleki.sideprojects.timetally.backend.interfaces.rest.util.Responses;
 import ir.maleki.sideprojects.timetally.domain.user.User;
-import ir.maleki.sideprojects.timetally.interfaces.rest.util.Responses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;

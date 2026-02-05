@@ -1,4 +1,4 @@
-package ir.maleki.sideprojects.timetally.interfaces.rest;
+package ir.maleki.sideprojects.timetally.backend.interfaces.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.maleki.sideprojects.timetally.application.user.CreateUser;

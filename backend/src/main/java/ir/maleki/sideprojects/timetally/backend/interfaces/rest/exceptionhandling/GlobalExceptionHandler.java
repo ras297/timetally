@@ -1,4 +1,4 @@
-package ir.maleki.sideprojects.timetally.interfaces.rest.exceptionhandling;
+package ir.maleki.sideprojects.timetally.backend.interfaces.rest.exceptionhandling;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

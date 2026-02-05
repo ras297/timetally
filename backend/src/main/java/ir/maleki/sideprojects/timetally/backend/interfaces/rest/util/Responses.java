@@ -1,4 +1,4 @@
-package ir.maleki.sideprojects.timetally.interfaces.rest.util;
+package ir.maleki.sideprojects.timetally.backend.interfaces.rest.util;
 
 import ir.maleki.sideprojects.timetally.application.user.UserDto;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
 package ir.maleki.sideprojects.timetally.backend.interfaces.rest.util;
 
-import ir.maleki.sideprojects.timetally.application.user.UserDto;
+import ir.maleki.sideprojects.timetally.backend.dto.Dto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -8,7 +8,7 @@ import java.net.URI;
 
 public class Responses {
 
-    public static ResponseEntity<UserDto> created(Long id, UserDto response) {
+    public static <T extends Dto> ResponseEntity<T> created(Long id, T response) {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
             .buildAndExpand(id)

@@ -1,6 +1,5 @@
-package ir.maleki.sideprojects.timetally.domain.user;
+package ir.maleki.sideprojects.timetally.domain;
 
-import ir.maleki.sideprojects.timetally.domain.base.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

@@ -1,4 +1,4 @@
-package ir.maleki.sideprojects.timetally.domain.base;
+package ir.maleki.sideprojects.timetally.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;

@@ -1,7 +1,7 @@
 package ir.maleki.sideprojects.timetally.backend.dto.mappers;
 
 import ir.maleki.sideprojects.timetally.backend.dto.UserDto;
-import ir.maleki.sideprojects.timetally.domain.user.User;
+import ir.maleki.sideprojects.timetally.domain.User;
 import org.springframework.stereotype.Component;
 
 @Component

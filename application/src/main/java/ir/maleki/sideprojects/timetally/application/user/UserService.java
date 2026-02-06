@@ -17,6 +17,6 @@ public class UserService {
         if (userRepository.existsByUsername(command.username())) {
             throw new UserAlreadyExistsException(command.username());
         }
-        return userRepository.saveAndFlush(new User(command.username()));
+        return userRepository.save(new User(command.username()));
     }
 }

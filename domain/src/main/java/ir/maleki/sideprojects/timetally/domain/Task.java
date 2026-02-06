@@ -1,11 +1,13 @@
 package ir.maleki.sideprojects.timetally.domain;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+@Entity
 public class Task extends BaseEntity {
     private String title;
     private String description;

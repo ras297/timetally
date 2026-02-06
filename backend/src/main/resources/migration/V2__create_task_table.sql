@@ -38,3 +38,5 @@ CREATE TABLE task
     version     INT          NOT NULL DEFAULT 0,
     CONSTRAINT fk_task_user FOREIGN KEY (user_id) REFERENCES "app_user" (id)
 );
+
+CREATE INDEX idx_task_user_id ON task(user_id);

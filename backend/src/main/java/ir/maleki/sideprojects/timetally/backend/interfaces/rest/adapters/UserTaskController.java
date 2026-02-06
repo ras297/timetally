@@ -8,6 +8,7 @@ import ir.maleki.sideprojects.timetally.backend.dto.mappers.TaskToDtoMapper;
 import ir.maleki.sideprojects.timetally.backend.interfaces.rest.util.Responses;
 import ir.maleki.sideprojects.timetally.domain.Task;
 import ir.maleki.sideprojects.timetally.domain.User;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -18,18 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserTaskController {
     private final TaskService taskService;
     private final TaskToDtoMapper mapper;
     private final JpaUserRepository userRepository;
-
-    public UserTaskController(TaskService taskService, TaskToDtoMapper mapper, JpaUserRepository userRepository) {
-        this.taskService = taskService;
-        this.mapper = mapper;
-        this.userRepository = userRepository;
-    }
 
     @PostMapping("/{id}/tasks")
     @ResponseStatus(HttpStatus.CREATED)

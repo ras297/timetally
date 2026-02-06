@@ -6,6 +6,7 @@ import ir.maleki.sideprojects.timetally.application.user.UserService;
 import ir.maleki.sideprojects.timetally.backend.dto.mappers.UserToDtoMapper;
 import ir.maleki.sideprojects.timetally.backend.interfaces.rest.util.Responses;
 import ir.maleki.sideprojects.timetally.domain.User;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,16 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
     private final UserService userService;
     private final UserToDtoMapper mapper;
-
-    public UserController(UserService userService, UserToDtoMapper mapper) {
-        this.userService = userService;
-        this.mapper = mapper;
-    }
 
     @PostMapping
     public ResponseEntity<UserDto> createUser(@RequestBody @Validated CreateUser request) {

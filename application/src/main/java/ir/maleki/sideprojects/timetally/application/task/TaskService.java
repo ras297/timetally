@@ -2,16 +2,14 @@ package ir.maleki.sideprojects.timetally.application.task;
 
 import ir.maleki.sideprojects.timetally.domain.Task;
 import ir.maleki.sideprojects.timetally.domain.User;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@AllArgsConstructor
 @Service
 public class TaskService {
     private final JpaTaskRepository repository;
-
-    public TaskService(JpaTaskRepository repository) {
-        this.repository = repository;
-    }
 
     @Transactional
     public Task createTask(CreateTask command, User user) {

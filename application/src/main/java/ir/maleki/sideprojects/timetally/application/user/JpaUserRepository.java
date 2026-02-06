@@ -1,4 +1,4 @@
-package ir.maleki.sideprojects.timetally.application.user.repository;
+package ir.maleki.sideprojects.timetally.application.user;
 
 import ir.maleki.sideprojects.timetally.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;

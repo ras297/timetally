@@ -1,6 +1,5 @@
 package ir.maleki.sideprojects.timetally.application.user;
 
-import ir.maleki.sideprojects.timetally.application.user.repository.JpaUserRepository;
 import ir.maleki.sideprojects.timetally.domain.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

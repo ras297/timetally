@@ -15,4 +15,9 @@ public class Responses {
             .toUri();
         return ResponseEntity.created(location).body(response);
     }
+
+    public static <T extends Dto> ResponseEntity<T> ok(T response) {
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand().toUri();
+        return ResponseEntity.ok().location(location).body(response);
+    }
 }

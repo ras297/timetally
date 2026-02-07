@@ -16,6 +16,9 @@ public class TaskService {
     private final JpaTaskRepository repository;
 
     public Page<Task> searchTasks(TaskSearch query, Pageable pageable) {
+        if (query.ownerId() == null) {
+            throw new IllegalArgumentException("owner id is required");
+        }
         Specification<Task> spec = TaskSpecifications.filter(query);
         return repository.findAll(spec, pageable);
     }

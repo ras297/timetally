@@ -1,5 +1,6 @@
 package ir.maleki.sideprojects.timetally.backend.interfaces.rest.adapters;
 
+import ir.maleki.sideprojects.timetally.application.task.ChangeTaskStatus;
 import ir.maleki.sideprojects.timetally.application.task.CreateTask;
 import ir.maleki.sideprojects.timetally.application.task.TaskService;
 import ir.maleki.sideprojects.timetally.application.task.UpdateTask;
@@ -13,6 +14,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -42,6 +44,17 @@ public class UserTaskController {
     public ResponseEntity<TaskDto> updateTask(@PathVariable Long userId, @PathVariable Long taskId,
                                               @Validated @RequestBody UpdateTask request) {
         Task task = taskService.updateTask(userId, taskId, request);
+        return Responses.ok(mapper.toDto(task));
+    }
+
+    @PatchMapping("/{userId}/tasks/{taskId}/status")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<TaskDto> changeTaskStatus(
+        @PathVariable Long userId,
+        @PathVariable Long taskId,
+        @Validated @RequestBody ChangeTaskStatus request
+    ) {
+        Task task = taskService.changeStatus(userId, taskId, request);
         return Responses.ok(mapper.toDto(task));
     }
 

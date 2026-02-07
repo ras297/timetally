@@ -31,7 +31,7 @@ public class TaskService {
     @Transactional
     public Task updateTask(Long userId, Long taskId, UpdateTask command) {
         Task task = repository.findById(taskId).orElseThrow(IllegalArgumentException::new);
-       if (!task.ownerId().equals(userId)) {
+        if (!task.ownerId().equals(userId)) {
             throw new IllegalArgumentException("Task does not belong to user");
         }
 
@@ -44,6 +44,18 @@ public class TaskService {
         if (command.type() != null) {
             task.setType(command.type());
         }
+
+        return repository.save(task);
+    }
+
+    @Transactional
+    public Task changeStatus(Long userId, Long taskId, ChangeTaskStatus request) {
+        Task task = repository.findById(taskId).orElseThrow(() -> new IllegalArgumentException("Task not found"));
+        if (!task.ownerId().equals(userId)) {
+            throw new IllegalArgumentException("Task does not belong to user");
+        }
+
+        task.changeStatus(request.status());
 
         return repository.save(task);
     }

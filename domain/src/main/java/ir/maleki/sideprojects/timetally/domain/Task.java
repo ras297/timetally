@@ -1,5 +1,6 @@
 package ir.maleki.sideprojects.timetally.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -17,6 +18,9 @@ public class Task extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
+
+    @Column(name = "owner_id", insertable = false, updatable = false)
+    private Long ownerId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "owner_id", nullable = false)
@@ -54,11 +58,16 @@ public class Task extends BaseEntity {
         this.status = status;
     }
 
+    public Long ownerId() {
+        return ownerId;
+    }
+
     public User owner() {
         return owner;
     }
 
     public void setOwner(User user) {
         this.owner = user;
+        this.ownerId = user.id();
     }
 }

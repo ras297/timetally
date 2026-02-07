@@ -14,6 +14,6 @@ public class TaskToDtoMapper implements Mapper<Task, TaskDto> {
             entity.description(),
             entity.type(),
             entity.status(),
-            entity.owner().id());
+            entity.ownerId());
     }
 }

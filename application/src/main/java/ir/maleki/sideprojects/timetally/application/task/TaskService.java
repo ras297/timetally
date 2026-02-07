@@ -31,7 +31,7 @@ public class TaskService {
     @Transactional
     public Task updateTask(Long userId, Long taskId, UpdateTask command) {
         Task task = repository.findById(taskId).orElseThrow(IllegalArgumentException::new);
-        if (!task.owner().id().equals(userId)) {
+       if (!task.ownerId().equals(userId)) {
             throw new IllegalArgumentException("Task does not belong to user");
         }
 

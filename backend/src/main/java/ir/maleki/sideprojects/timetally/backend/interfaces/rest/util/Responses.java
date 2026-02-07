@@ -20,4 +20,8 @@ public class Responses {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand().toUri();
         return ResponseEntity.ok().location(location).body(response);
     }
+
+    public static ResponseEntity<Void> noContent() {
+        return ResponseEntity.noContent().build();
+    }
 }

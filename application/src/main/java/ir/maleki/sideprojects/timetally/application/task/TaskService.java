@@ -4,6 +4,9 @@ import ir.maleki.sideprojects.timetally.common.Strings;
 import ir.maleki.sideprojects.timetally.domain.Task;
 import ir.maleki.sideprojects.timetally.domain.User;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class TaskService {
     private final JpaTaskRepository repository;
+
+    public Page<Task> searchTasks(TaskSearch query, Pageable pageable) {
+        Specification<Task> spec = TaskSpecifications.filter(query);
+        return repository.findAll(spec, pageable);
+    }
 
     @Transactional
     public Task createTask(CreateTask command, User user) {
@@ -58,5 +66,14 @@ public class TaskService {
         task.changeStatus(request.status());
 
         return repository.save(task);
+    }
+
+    @Transactional
+    public void deleteTask(Long userId, Long taskId) {
+        Task task = repository
+            .findByIdAndOwnerId(taskId, userId)
+            .orElseThrow(() -> new IllegalArgumentException("Task not found"));
+
+        repository.delete(task);
     }
 }

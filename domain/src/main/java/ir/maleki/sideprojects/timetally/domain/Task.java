@@ -19,8 +19,8 @@ public class Task extends BaseEntity {
     private TaskStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "owner_id", nullable = false)
+    private User owner;
 
     public TaskType type() {
         return type;
@@ -54,11 +54,11 @@ public class Task extends BaseEntity {
         this.status = status;
     }
 
-    public User user() {
-        return user;
+    public User owner() {
+        return owner;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setOwner(User user) {
+        this.owner = user;
     }
 }

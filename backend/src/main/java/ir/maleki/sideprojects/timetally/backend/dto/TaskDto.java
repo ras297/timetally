@@ -9,5 +9,5 @@ public record TaskDto(
     String description,
     TaskType type,
     TaskStatus status,
-    Long userId
+    Long ownerId
 ) implements Dto {}

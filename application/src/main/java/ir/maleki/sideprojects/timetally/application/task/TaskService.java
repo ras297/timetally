@@ -23,7 +23,7 @@ public class TaskService {
         task.setDescription(command.description());
         task.setStatus(command.status());
         task.setType(command.type());
-        task.setUser(user);
+        task.setOwner(user);
 
         return repository.save(task);
     }
@@ -31,7 +31,7 @@ public class TaskService {
     @Transactional
     public Task updateTask(Long userId, Long taskId, UpdateTask command) {
         Task task = repository.findById(taskId).orElseThrow(IllegalArgumentException::new);
-        if (!task.user().id().equals(userId)) {
+        if (!task.owner().id().equals(userId)) {
             throw new IllegalArgumentException("Task does not belong to user");
         }
 

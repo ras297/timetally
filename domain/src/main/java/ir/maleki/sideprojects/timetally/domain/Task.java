@@ -55,6 +55,13 @@ public class Task extends BaseEntity {
     }
 
     public void changeStatus(TaskStatus newStatus) {
+        if(status == null) {
+            status = newStatus;
+            return;
+        }
+        if (status == newStatus) {
+            throw new IllegalStateException("Already changed status to " + newStatus);
+        }
         if (!this.status.canTransitionTo(newStatus)) {
             throw new IllegalStateException("Cannot change task status from " + status + " to " + newStatus);
         }

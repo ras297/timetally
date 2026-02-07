@@ -21,7 +21,7 @@ public class TaskService {
         Task task = new Task();
         task.setTitle(command.title());
         task.setDescription(command.description());
-        task.setStatus(command.status());
+        task.changeStatus(command.status());
         task.setType(command.type());
         task.setOwner(user);
 

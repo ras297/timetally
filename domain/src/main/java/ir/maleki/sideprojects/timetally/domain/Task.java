@@ -54,8 +54,11 @@ public class Task extends BaseEntity {
         return status;
     }
 
-    public void setStatus(TaskStatus status) {
-        this.status = status;
+    public void changeStatus(TaskStatus newStatus) {
+        if (!this.status.canTransitionTo(newStatus)) {
+            throw new IllegalStateException("Cannot change task status from " + status + " to " + newStatus);
+        }
+        this.status = newStatus;
     }
 
     public Long ownerId() {
